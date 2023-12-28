@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
 <html>
   <head>
+    {% load static %}
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Student</title>
@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
+    <!-- 
     <input type="text" id="input-id" placeholder="Enter text here" />
     <button>Search</button>
-    <button>Click Me</button>
+   
+    <button>Show Fullname</button>
 
     {% if firstName and lastName %}
     <p>FirstName: {{ firstName }}</p>
@@ -23,9 +25,11 @@
     {% else %}
     <p>No data available</p>
     {% endif %}
+-->
 
-    <p>A sample change</p>
-    <h1>Another test change</h1>
-    <h2>huehuehue</h2>
+    <h2>Uploaded Images:</h2>
+    {% for image in images %}
+    <img src="{{ image.image.url }}" alt="Image" />
+    {% endfor %}
   </body>
 </html>

@@ -7,3 +7,7 @@ class Student(models.Model):
     lastName = models.CharField(max_length=100)
     gender = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
+
+
+class ImageUpload(models.Model):
+    image = models.ImageField(upload_to="img/")

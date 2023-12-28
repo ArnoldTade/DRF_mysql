@@ -1,12 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Student
+from .models import *
 from .serializers import StudentSerializer
-
-from django.shortcuts import render
 
 
 # Create your views here.
@@ -43,3 +41,9 @@ def student_detail_view(request):
         )
     except Student.DoesNotExist:
         return render(request, "home.html", {"error": "Student with id=1 not found"})
+
+
+# IMAGE UPLOAD IN ADMIN
+def imageUpload(request):
+    images = ImageUpload.objects.all()
+    return render(request, "home.html", {"images": images})
