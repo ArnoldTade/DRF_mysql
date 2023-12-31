@@ -11,3 +11,4 @@ class Student(models.Model):
 
 class ImageUpload(models.Model):
     image = models.ImageField(upload_to="img/")
+    type = models.CharField(max_length=100)

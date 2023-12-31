@@ -6,6 +6,8 @@ from rest_framework import status
 from .models import *
 from .serializers import StudentSerializer
 
+from .forms import ImageUploadForm
+
 
 # Create your views here.
 def home(request):
@@ -47,3 +49,17 @@ def student_detail_view(request):
 def imageUpload(request):
     images = ImageUpload.objects.all()
     return render(request, "home.html", {"images": images})
+
+
+# IMAGE UPLOAD FROM FORMS
+def formUpload(request):
+    if request.method == "POST":
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("formUpload")
+    else:
+        form = ImageUploadForm()
+
+    images = ImageUpload.objects.all()
+    return render(request, "home.html", {"form": form, "images": images})
